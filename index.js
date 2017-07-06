@@ -8,15 +8,6 @@ const request = require('request')
 
 
 /**
- * Default request options.
- */
-
-const options = {
-  method: 'GET'
-}
-
-
-/**
  * Create HTTP server and send request using the npm module
  * request/request
  *
@@ -32,7 +23,10 @@ module.exports = function (cb, data) {
   }).listen(() => {
     const port = server.address().port
     const sock = net.connect(port)
-    request(Object.assign(request, data), () => {
+    request(Object.assign({
+      method: 'GET',
+      baseUrl: `http://localhost:${port}`
+    }, data), () => {
       sock.end()
       server.close()
     })
