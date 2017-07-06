@@ -17,12 +17,12 @@ const test = require('tape')
 test('should create a server and send POST request', assert => {
   server((req, res) => {
     assert.equal(req.method, 'POST')
+  }, {
+    method: 'POST',
+    form: {
+      foo: 'bar'
+    }
   })
-}, {
-  method: 'POST',
-  form: {
-    foo: 'bar'
-  }
 })
 ```
 The second optional argument is the options you can pass to the module [request](https://github.com/request/request).
