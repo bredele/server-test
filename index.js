@@ -7,6 +7,14 @@ const net = require('net')
 const request = require('request')
 
 
+/**
+ * Default request options.
+ */
+
+const options = {
+  method: 'GET'
+}
+
 
 /**
  * Create HTTP server and send request using the npm module
@@ -24,7 +32,7 @@ module.exports = function (cb, data) {
   }).listen(() => {
     const port = server.address().port
     const sock = net.connect(port)
-    request(data, () => {
+    request(Object.assign(request, data), () => {
       sock.end()
       server.close()
     })
