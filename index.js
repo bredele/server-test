@@ -17,18 +17,17 @@ const request = require('request')
  */
 
 module.exports = function (cb, data) {
-  const server = http.createServer((req, res) => {
-    cb(req, res)
-    res.end()
-  }).listen(() => {
-    const port = server.address().port
-    const sock = net.connect(port)
-    request(Object.assign({
-      method: 'GET',
-      baseUrl: `http://localhost:${port}`
-    }, data), () => {
-      sock.end()
-      server.close()
-    })
-  })
+ const server = http.createServer((req, res) => {
+   cb(req, res)
+   res.end()
+ }).listen(() => {
+   const port = server.address().port
+   const sock = net.connect(port)
+   request(`http://localhost:${port}`, Object.assign({
+     method: 'GET'
+   }, data), () => {
+     sock.end()
+     server.close()
+   })
+ })
 }
