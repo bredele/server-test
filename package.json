@@ -1,0 +1,25 @@
+{
+  "name": "server-test",
+  "version": "1.0.0",
+  "description": "Create HTTP server and request for your unit tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bredele/server-test.git"
+  },
+  "keywords": [
+    "server",
+    "http",
+    "request",
+    "test"
+  ],
+  "author": "Olvier <olivier.wietrich@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bredele/server-test/issues"
+  },
+  "homepage": "https://github.com/bredele/server-test#readme"
+}
