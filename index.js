@@ -13,13 +13,14 @@ const request = require('request')
  *
  * @param {Function} cb
  * @param {Object} data
+ * @param {Boolean} end
  * @api public
  */
 
-module.exports = function (cb, data) {
+module.exports = function (cb, data, end) {
  const server = http.createServer((req, res) => {
    cb(req, res)
-   res.end()
+   if (!end) res.end()
  }).listen(() => {
    const port = server.address().port
    const sock = net.connect(port)
